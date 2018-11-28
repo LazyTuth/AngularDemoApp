@@ -1,0 +1,7 @@
+<p *ngIf="editMode;else templateName">
+  Edit Mode for recipe id: {{id}}
+</p>
+
+<ng-template #templateName>
+  <p>New Mode</p>
+</ng-template>
