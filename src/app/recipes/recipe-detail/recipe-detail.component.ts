@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeModel } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -26,5 +27,9 @@ export class RecipeDetailComponent implements OnInit {
   onEditRecipe() {
     this.router.navigate(["edit"], {relativeTo: this.route});
     // this.router.navigate(["../", this.recipeId, "edit"], {relativeTo: this.route}); //new way to create complex path
+  }
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.recipeId);
+    this.router.navigate(["../../"], {relativeTo: this.route});
   }
 }
